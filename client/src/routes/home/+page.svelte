@@ -1,32 +1,25 @@
 <script>
+  import EntryInputContainer from "./EntryInputContainer.svelte";
+  import EntryInput from "./EntryInput.svelte";
 
 </script>
 
-<div id="entryInputContainer" class="container-fluid sticky-top">
-  <div id="entryInput" class="row g-0 text-bg-dark">
-    <div class="col-3">
-      <div class="row g-0">
-        <input id="entryDate" aria-label="Date" class="form-control text-bg-dark" placeholder="Date"
-               type="date">
-      </div>
-      <div class="row g-0">
-        <div class="form-floating">
-                <textarea id="entryLocation" aria-label="Location" class="form-control text-bg-dark"
-                          placeholder="Location"></textarea>
-          <label for="entryLocation">Location</label>
-        </div>
-      </div>
+<div id="topDiv" class="bg-gradient align-content-center">
+  <ul class="nav nav-tabs justify-content-center">
+    <li class="nav-item">
+      <button class="nav-link" data-bs-toggle="tab" data-bs-target="#basicTabPanel">Basic</button>
+    </li>
+    <li class="nav-item">
+      <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#advancedTabPanel">Advanced</button>
+    </li>
+  </ul>
+
+  <div class="tab-content">
+    <div class="tab-pane fade" id="basicTabPanel" role="tabpanel">
+      <EntryInput/>
     </div>
-    <div class="col-6 g-0 h-100">
-      <div class="form-floating">
-                <textarea id="entryText" aria-label="Entry" class="form-control text-bg-dark"
-                          placeholder="Entry"></textarea>
-        <label for="entryText">Entry</label>
-      </div>
-    </div>
-    <div class="d-grid gap-2 col-3">
-      <button class="btn btn-outline-light" id="entryPreviewButton" data-bs-target="#previewModal" data-bs-toggle="modal">Preview Entry</button>
-      <button class="btn btn-outline-light" id="entryButton">Create Entry</button>
+    <div class="tab-pane fade show active" id="advancedTabPanel" role="tabpanel">
+      <EntryInputContainer/>
     </div>
   </div>
 </div>
