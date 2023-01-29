@@ -7,18 +7,22 @@
 <div id="topDiv" class="bg-gradient align-content-center">
   <ul class="nav nav-tabs justify-content-center">
     <li class="nav-item">
-      <button class="nav-link" data-bs-toggle="tab" data-bs-target="#basicTabPanel">Basic</button>
+      <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#basicTabPanel">Basic</button>
     </li>
     <li class="nav-item">
-      <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#advancedTabPanel">Advanced</button>
+      <button class="nav-link" data-bs-toggle="tab" data-bs-target="#advancedTabPanel">Advanced</button>
     </li>
   </ul>
 
   <div class="tab-content">
-    <div class="tab-pane fade" id="basicTabPanel" role="tabpanel">
-      <EntryInput/>
+    <div class="tab-pane fade show active" id="basicTabPanel" role="tabpanel">
+      <div class="row justify-content-center">
+        <div class="col-6 g-0 h-100">
+          <EntryInput inputLabel="Press enter to create entry for today"/>
+        </div>
+      </div>
     </div>
-    <div class="tab-pane fade show active" id="advancedTabPanel" role="tabpanel">
+    <div class="tab-pane fade" id="advancedTabPanel" role="tabpanel">
       <EntryInputContainer/>
     </div>
   </div>

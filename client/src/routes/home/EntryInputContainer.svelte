@@ -28,7 +28,7 @@
       </div>
     </div>
     <div class="col-6 g-0 h-100">
-      <EntryInput bind:inputText/>
+      <EntryInput bind:inputText inputLabel="Entry"/>
     </div>
     <div class="d-grid gap-2 col-3">
       <button class="btn btn-outline-secondary form-control" type="button" id="entryPreviewButton" on:click={previewEntry} data-bs-target="#previewModal" data-bs-toggle="modal">Preview Entry</button>

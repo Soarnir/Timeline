@@ -1,12 +1,12 @@
 <script>
-  import {afterUpdate} from 'svelte'
+  import { afterUpdate } from "svelte";
 
+  export let inputLabel = ''
   export let inputText = ''
 
-  function resizeTextarea(event) {
-    event.target.style.height = "auto";
-    event.target.style.height = event.target.scrollHeight + "px";
-  }
+  // function resizeTextarea(event) {
+  //   event.target.style.height = event.target.scrollHeight + "px";
+  // }
 
   afterUpdate(() => {
     // DOM updated
@@ -19,7 +19,7 @@
       "style",
       "height:" + height + "px;overflow-y:hidden;"
     );
-    document.getElementById('entryText').addEventListener("input", resizeTextarea);
+    // document.getElementById('entryText').addEventListener("input", resizeTextarea);
   })
 
 </script>
@@ -27,15 +27,24 @@
 <div class="form-floating">
                 <textarea id="entryText" bind:value={inputText} aria-label="Entry" class="form-control"
                           placeholder="Entry"></textarea>
-  <label for="entryText">Entry</label>
+  <label for="entryText">{inputLabel}</label>
 </div>
 
 
 <style>
     #entryText {
         border-radius: 0;
-        height: 91px;
+        border-color: transparent;
+        background-color: slategray;
+        color: black;
+        min-height: 91px;
+        outline: none;
+        --bs-btn-active-border-color: none;
     }
 
+    #entryText:focus {
+        border-color: transparent;
+        --bs-btn-active-border-color: none;
+    }
 
 </style>
