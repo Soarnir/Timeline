@@ -1,9 +1,11 @@
 <script>
 	import '../app.scss';
-  import 'bootstrap/dist/js/bootstrap.js'
+  import 'bootstrap/js/dist/modal'
+  import 'bootstrap/js/dist/button'
+  import 'bootstrap/js/dist/tab'
 </script>
 
-<nav class="navbar navbar-expand-lg bg-light">
+<nav class="navbar navbar-expand-lg bg-body">
   <div class="container-fluid">
     <div class="collapse navbar-collapse">
       <ul class="navbar-nav me-auto">
@@ -28,3 +30,9 @@
 </nav>
 
 <slot />
+
+<style>
+    :global(body) {
+        background-color: slategray;
+    }
+</style>

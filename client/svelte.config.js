@@ -14,7 +14,11 @@ const config = {
 			}
 		})
 	],
-
+	package: {
+		files: {
+			assets: "static"
+		}
+	},
 	kit: {
 		adapter: adapter()
 	}

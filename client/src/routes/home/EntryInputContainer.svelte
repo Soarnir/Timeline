@@ -5,39 +5,63 @@
 
   let formattedText = ''
   let inputText = ''
+  let append;
+  export let rapid;
 
   function previewEntry() {
     formattedText = DOMPurify.sanitize(marked.parse(inputText))
     document.getElementById('markdownEntryPreview').innerHTML = formattedText
   }
+
+  function handleSubmit() {
+    if (append) {
+      // Append
+    } else {
+      // Create new
+    }
+  }
 </script>
 
 <div id="entryInputContainer" class="container-xl sticky-top bg-transparent">
-  <div id="entryInput" class="row g-0">
-    <div class="col-3">
-      <div class="row g-0">
-        <input id="entryDate" aria-label="Date" class="form-control" placeholder="Date"
-               type="date">
-      </div>
-      <div class="row g-0">
-        <div class="form-floating">
-                <textarea id="entryLocation" aria-label="Location" class="form-control"
-                          placeholder="Location"></textarea>
-          <label for="entryLocation">Location</label>
+  <div id="entryInput" class="row g-0 justify-content-center">
+    {#if !rapid}
+      <div class="col-2">
+        <div class="row g-0">
+          <input id="entryDate" aria-label="Date" class="form-control" placeholder="Date"
+                 type="date">
+        </div>
+        <div class="row g-0">
+          <div class="form-floating">
+                  <textarea id="entryLocation" aria-label="Location" class="form-control"
+                            placeholder="Location"></textarea>
+            <label for="entryLocation">Location</label>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="col-6 g-0 h-100">
-      <EntryInput bind:inputText inputLabel="Entry"/>
-    </div>
-    <div class="d-grid gap-2 col-3">
-      <button class="btn btn-outline-secondary form-control" type="button" id="entryPreviewButton" on:click={previewEntry} data-bs-target="#previewModal" data-bs-toggle="modal">Preview Entry</button>
-      <button class="btn btn-outline-secondary form-control" type="button" id="entryButton">Create Entry</button>
-    </div>
+      <div class="col-8 g-0 h-100">
+        <EntryInput {rapid} bind:inputText inputLabel="Entry"/>
+      </div>
+      <div class="col-2">
+        <div class="row g-0">
+          <button class="btn btn-outline-secondary form-control" type="button" id="entryPreviewButton" on:click={previewEntry} data-bs-target="#previewModal" data-bs-toggle="modal">Preview Entry</button>
+        </div>
+        <div class="row g-0">
+          <button class="btn btn-outline-secondary form-control" type="button" id="entryButton">Create Entry</button>
+        </div>
+      </div>
+    {:else if (rapid)}
+      <div class="col-8 g-0 h-100">
+        <EntryInput {rapid} bind:inputText inputLabel="Press enter to create entry for today"/>
+      </div>
+    {/if}
   </div>
 </div>
 
 <style>
+    #entryButton, #entryPreviewButton {
+        max-height: 50px;
+    }
+    
     .form-control {
         border-radius: 0;
         min-height: 50px;

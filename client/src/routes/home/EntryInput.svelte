@@ -3,36 +3,46 @@
 
   export let inputLabel = ''
   export let inputText = ''
-
-  // function resizeTextarea(event) {
-  //   event.target.style.height = event.target.scrollHeight + "px";
-  // }
+  export let rapid;
+  let minHeight = 0;
+  let height = 0;
 
   afterUpdate(() => {
     // DOM updated
-    let height = document.getElementById('entryText').scrollHeight
-    if (height < document.getElementById('entryInputContainer').scrollHeight) {
-      height = document.getElementById('entryInputContainer').scrollHeight
+    if (minHeight === 0) {
+      minHeight = document.getElementById('entryInputContainer').clientHeight;
+      console.log("set height to: " + minHeight)
     }
-
-    document.getElementById('entryText').setAttribute(
+    height = document.getElementById('entryTextArea').scrollHeight
+    if (height <= minHeight) {
+      height = minHeight
+    }
+    console.log("setting height: " + height)
+    document.getElementById('entryTextArea').setAttribute(
       "style",
       "height:" + height + "px;overflow-y:hidden;"
     );
-    // document.getElementById('entryText').addEventListener("input", resizeTextarea);
   })
 
 </script>
 
-<div class="form-floating">
-                <textarea id="entryText" bind:value={inputText} aria-label="Entry" class="form-control"
-                          placeholder="Entry"></textarea>
-  <label for="entryText">{inputLabel}</label>
-</div>
+{#if !rapid}
+  <div class="form-floating">
+    <textarea id="entryTextArea" bind:value={inputText} aria-label="Entry" class="form-control"
+              placeholder="Entry"></textarea>
+    <label for="entryTextArea">{inputLabel}</label>
+  </div>
+{:else if (rapid)}
+  <div class="form-floating">
+    <input id="entryTextInput" bind:value={inputText} aria-label="Entry" class="form-control"
+              placeholder="Entry"/>
+    <label for="entryTextInput">{inputLabel}</label>
+  </div>
+{/if}
 
 
 <style>
-    #entryText {
+    #entryTextArea {
         border-radius: 0;
         border-color: transparent;
         background-color: slategray;
@@ -42,7 +52,16 @@
         --bs-btn-active-border-color: none;
     }
 
-    #entryText:focus {
+    #entryTextInput {
+        border-radius: 0;
+        border-color: transparent;
+        background-color: lightslategray;
+        color: black;
+        outline: none;
+        --bs-btn-active-border-color: none;
+    }
+
+    #entryTextArea:focus, #entryTextInput:focus {
         border-color: transparent;
         --bs-btn-active-border-color: none;
     }

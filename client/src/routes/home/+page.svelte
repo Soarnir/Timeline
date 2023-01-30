@@ -1,29 +1,24 @@
 <script>
   import EntryInputContainer from "./EntryInputContainer.svelte";
-  import EntryInput from "./EntryInput.svelte";
 
 </script>
 
 <div id="topDiv" class="bg-gradient align-content-center">
   <ul class="nav nav-tabs justify-content-center">
-    <li class="nav-item">
-      <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#basicTabPanel">Basic</button>
+    <li class="nav-item" id="rapidTab">
+      <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#rapidTabPanel"><span>Rapid</span></button>
     </li>
-    <li class="nav-item">
-      <button class="nav-link" data-bs-toggle="tab" data-bs-target="#advancedTabPanel">Advanced</button>
+    <li class="nav-item" id="advancedTab">
+      <button class="nav-link" data-bs-toggle="tab" data-bs-target="#advancedTabPanel"><span>Advanced</span></button>
     </li>
   </ul>
 
   <div class="tab-content">
-    <div class="tab-pane fade show active" id="basicTabPanel" role="tabpanel">
-      <div class="row justify-content-center">
-        <div class="col-6 g-0 h-100">
-          <EntryInput inputLabel="Press enter to create entry for today"/>
-        </div>
-      </div>
+    <div class="tab-pane fade show active" id="rapidTabPanel" role="tabpanel">
+      <EntryInputContainer rapid={true} />
     </div>
     <div class="tab-pane fade" id="advancedTabPanel" role="tabpanel">
-      <EntryInputContainer/>
+      <EntryInputContainer rapid={false} />
     </div>
   </div>
 </div>
@@ -44,3 +39,18 @@
     </div>
   </div>
 </div>
+
+<style>
+  .nav-link {
+      padding-left: 32px;
+      padding-right: 32px;
+      border-radius: 0;
+      transform: skew(-30deg);
+      --bs-nav-link-hover-color: none;
+  }
+  button > span {
+      color: black;
+      display: inline-block;
+      transform: skew(30deg);
+  }
+</style>
