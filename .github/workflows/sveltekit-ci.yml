@@ -14,5 +14,6 @@ jobs:
 
       - name: Install and Build
         run: |
+          cd client
           npm install
           npm run build
