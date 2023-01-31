@@ -17,6 +17,7 @@
 		"@playwright/test": "^1.28.1",
 		"@popperjs/core": "^2.11.5",
 		"@sveltejs/adapter-auto": "^1.0.0",
+		"@sveltejs/adapter-cloudflare": "^2.0.1",
 		"@sveltejs/kit": "^1.2.5",
 		"@types/dompurify": "^2.4.0",
 		"@types/gapi": "^0.0.43",
