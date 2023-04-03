@@ -1,7 +1,12 @@
 <script>
   import EntryInputContainer from "./EntryInputContainer.svelte";
+  import EntryContainer from "./EntryContainer.svelte";
 
 </script>
+
+<div style="font-style: italic; font-size: 12px">
+  <p class="text-center" style="margin: 0">This website supports <a href="https://commonmark.org/help/" target=”_blank”>markdown</a>!</p>
+</div>
 
 <div id="topDiv" class="bg-gradient align-content-center">
   <ul class="nav nav-tabs justify-content-center">
@@ -21,6 +26,10 @@
       <EntryInputContainer rapid={false} />
     </div>
   </div>
+</div>
+
+<div>
+  <EntryContainer/>
 </div>
 
 <div class="modal fade" id="previewModal" tabindex="-1" aria-labelledby="previewModalLabel" aria-hidden="true">
