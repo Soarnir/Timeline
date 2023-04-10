@@ -1,6 +1,8 @@
-<script>
+<script lang="ts">
   import EntryInputContainer from "./EntryInputContainer.svelte";
   import EntryContainer from "./EntryContainer.svelte";
+
+  let entryMap;
 
 </script>
 
@@ -20,16 +22,16 @@
 
   <div class="tab-content">
     <div class="tab-pane fade show active" id="rapidTabPanel" role="tabpanel">
-      <EntryInputContainer rapid={true} />
+      <EntryInputContainer rapid={true} entryMap={entryMap}/>
     </div>
     <div class="tab-pane fade" id="advancedTabPanel" role="tabpanel">
-      <EntryInputContainer rapid={false} />
+      <EntryInputContainer rapid={false} entryMap={entryMap}/>
     </div>
   </div>
 </div>
 
 <div>
-  <EntryContainer/>
+  <EntryContainer bind:entryMap/>
 </div>
 
 <div class="modal fade" id="previewModal" tabindex="-1" aria-labelledby="previewModalLabel" aria-hidden="true">

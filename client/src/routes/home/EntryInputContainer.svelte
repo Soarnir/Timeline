@@ -1,12 +1,16 @@
-<script>
+<script lang="ts">
   import EntryInput from "./EntryInput.svelte";
   import DOMPurify from "dompurify";
   import { marked } from "marked";
 
+
+
+  export let entryMap
   let formattedText = ''
   let inputText = ''
-  let append;
-  export let rapid;
+  let append: boolean
+  let currentDate = new Date(Date.now()).toISOString().slice(0, 10)
+  export let rapid: boolean
 
   function previewEntry() {
     formattedText = DOMPurify.sanitize(marked.parse(inputText))
@@ -14,16 +18,22 @@
   }
 
   function handleSubmit() {
-    if (append) {
-      // Append
+    console.log("submitting")
+    let mappedDate = entryMap.get(currentDate)
+    console.log(mappedDate)
+    if (mappedDate !== undefined) {
+      let intermediary = mappedDate
+      intermediary.add({title:"Title 1", info:inputText})
+      entryMap.set(currentDate, intermediary)
     } else {
-      // Create new
+      entryMap.set(currentDate, [{title:"Title 1", info:inputText}])
     }
+    console.log(entryMap)
   }
 </script>
 
 <div id="entryInputContainer" class="container-xl sticky-top bg-transparent">
-  <div id="entryInput" class="row g-0 justify-content-center">
+  <form on:submit|preventDefault={handleSubmit} id="entryInput" class="row g-0 justify-content-center">
     {#if !rapid}
       <div class="col-2">
         <div class="row g-0">
@@ -43,7 +53,8 @@
       </div>
       <div class="col-2">
         <div class="row g-0">
-          <button class="btn btn-outline-secondary form-control" type="button" id="entryPreviewButton" on:click={previewEntry} data-bs-target="#previewModal" data-bs-toggle="modal">Preview Entry</button>
+          <button class="btn btn-outline-secondary form-control" type="button" id="entryPreviewButton"
+                  on:click={previewEntry} data-bs-target="#previewModal" data-bs-toggle="modal">Preview Entry</button>
         </div>
         <div class="row g-0">
           <button class="btn btn-outline-secondary form-control" type="button" id="entryButton">Create Entry</button>
@@ -54,7 +65,7 @@
         <EntryInput {rapid} bind:inputText inputLabel="Press enter to create entry for today"/>
       </div>
     {/if}
-  </div>
+  </form>
 </div>
 
 <style>

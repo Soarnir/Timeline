@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import { afterUpdate } from "svelte";
 
   export let inputLabel = ''
@@ -28,17 +28,18 @@
 
 {#if !rapid}
   <div class="form-floating">
-    <textarea id="entryTextArea" bind:value={inputText} aria-label="Entry" class="form-control"
-              placeholder="Entry"></textarea>
+  <textarea id="entryTextArea" bind:value={inputText} aria-label="Entry" class="form-control"
+            placeholder="Entry"></textarea>
     <label for="entryTextArea">{inputLabel}</label>
   </div>
 {:else if (rapid)}
   <div class="form-floating">
-    <input id="entryTextInput" bind:value={inputText} aria-label="Entry" class="form-control"
-              placeholder="Entry"/>
+    <input id="entryTextInput" bind:value={inputText}  aria-label="Entry" class="form-control"
+           placeholder="Entry"/>
     <label for="entryTextInput">{inputLabel}</label>
   </div>
 {/if}
+
 
 
 <style>
