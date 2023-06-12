@@ -15,11 +15,21 @@ export let date;
 
 
 <style>
+  .card-background {
+      background-color: var(--primary);
+      opacity: 5%;
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      border-radius: 6px;
+      flex: 1;
+      top: 0;
+      left: 0;
+  }
   #indEntryCont {
       width: 1000px; 
       margin: auto;
       padding-bottom: 10px;
-      border-radius: 0.375rem;
-      background: rgba(171,171,171,0.66);
+      border-radius: 0.1rem;
   }
 </style>

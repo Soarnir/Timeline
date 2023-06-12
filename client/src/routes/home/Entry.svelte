@@ -3,7 +3,7 @@
   export let date = "";
 </script>
 
-<div class="card mb-3" style="width: 800px; margin: auto">
+<div id="EntryCard" class="card mb-3" style="width: 800px; margin: auto">
 
   <div class="card-header">
     <h4 class="card-title">{entry.title}</h4>
@@ -17,3 +17,12 @@
   <div class="card-footer">Footer</div>
 
 </div>
+
+<style>
+  #EntryCard {
+      color: var(--secbuttn);
+      background-color: var(--secbuttn);
+      opacity: 1;
+      border-radius: 1rem;
+  }
+</style>
