@@ -10,11 +10,18 @@ interface entryInterface {
 
 export let entryMap: entryMapType = new Map();
 
-entryMap.set("2023-01-02", [{ title: "Entry title", info: "Entry text" }, { title: "Entry title", info: "Entry text" }])
-entryMap.set("2023-01-01", [{ title: "Entry title", info: "Entry text" }, { title: "Entry title", info: "Entry text" }])
-entryMap.set("2023-01-03", [{ title: "Entry title", info: "Entry text" }, { title: "Entry title", info: "Entry text" }])
+entryMap.set("2023-01-02", [{ title: "Fun times", info: "They were indeed fun" }, { title: "Fun but not times", info: "Mostly fun but one thing ruined it all, ducks!" }])
+entryMap.set("2023-01-01", [{ title: "Sad times", info: "Very sad" }, { title: "Somewhat better", info: "Slightly better after" }])
+entryMap.set("2023-01-03", [{ title: "Melancholy times", info: "Indifferent I shall be" }, { title: "Still melancholy", info: "Screw it all!" }])
 
 const entryMap2 = writable(entryMap)
+
+//TODO optimizations
+//IDEA: preload array of set size with db calls (eg 100)
+//Within bounds of scroll (eg 25 from bottom or top) if array not at start or end begin loading next entries from db
+//Depopulate array of scrolled past entries beginning from extremes, populate array with new entries.
+//Maintain set size to reduce unnecessary db calls and loading
+//Cache either closest 100 entries to today or from when leaving website
 
 let entryArray = Array.from($entryMap2, ([key, value]) => ({ key, value }))
 

@@ -16,12 +16,23 @@
 
   <div class="card-footer">Footer</div>
 
+  <div class="card-background"></div>
 </div>
 
 <style>
+    .card-background {
+        background-color: var(--primary);
+        opacity: 5%;
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        border-radius: 6px;
+        flex: 1;
+        top: 0;
+        left: 0;
+    }
   #EntryCard {
-      color: var(--secbuttn);
-      background-color: var(--secbuttn);
+      color: var(--secondary);
       opacity: 1;
       border-radius: 1rem;
   }
